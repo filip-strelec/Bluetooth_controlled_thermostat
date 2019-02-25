@@ -56,9 +56,9 @@ void setup() {
   pinMode(13, OUTPUT); 
 //  Serial.begin(9600);  
   bluetooth.begin(9600); // start the bluetooth uart at 9600 which is its default
-  delay(200); // wait for voltage stabilize
-  bluetooth.print("Grijanje"); // place your name in here to configure the bluetooth name.
-                                       // will require reboot for settings to take affect. 
+  delay(200); // wait for voltage to stabilize
+  bluetooth.print("Grijanje"); 
+                                     
   delay(3000); // wait for settings to take affect. 
 }
 
@@ -140,7 +140,7 @@ if (bluetooth.available()){
     case '1':
      if(!stepper1.isRunning()){
      bluetooth.print("Grijanje UGASENO!!!!!!!!!!!!!!!");
-       digitalWrite(13,LOW); // if so, toggle the onboard LED
+       digitalWrite(13,LOW); 
        stepper1.enableOutputs();
 
         stepper1.setMaxSpeed(1000.0);
@@ -162,7 +162,7 @@ if (bluetooth.available()){
      if(!stepper1.isRunning()){
     bluetooth.print("Grijanje UPALJENO!!!!!!!!!!!!!!!");
     stepper1.enableOutputs();
-//       myStepper.step(stepsPerRevolution/8);
+
 
            stepper1.setMaxSpeed(1000.0);
   stepper1.setAcceleration(100.0);
@@ -193,31 +193,6 @@ if (bluetooth.available()){
         }
     }
 
-//    if(bluetooth.read() == '1'){ // did we receive this character?
-//       bluetooth.print("     Ugaseno uspjesno!");
-//       digitalWrite(13,LOW); // if so, toggle the onboard LED
-////       myStepper.step(-stepsPerRevolution/8);
-//        stepper1.setMaxSpeed(1000.0);
-//  stepper1.setAcceleration(100.0);
-//  stepper1.setSpeed(200);
-//        stepper1.moveTo(000);
-//        
-//       
-//        
-//  }
-//
-//
-//  
-// else   { // did we receive this character?
-//       bluetooth.print("     Upaljeno uspjesno!!");
-//       digitalWrite(13,HIGH); // if so, toggle the onboard LED
-////       myStepper.step(stepsPerRevolution/8);
-//
-//           stepper1.setMaxSpeed(1000.0);
-//  stepper1.setAcceleration(100.0);
-//  stepper1.setSpeed(200);
-//        stepper1.moveTo(850);
-//    }
 
    
 }
@@ -252,12 +227,12 @@ lcd.setCursor(0, 0);
        
 
 if (stepper1.isRunning()){
-     digitalWrite(13,HIGH); // if so, toggle the onboard LED
+     digitalWrite(13,HIGH); 
   lcd.setCursor(3,0);
 lcd.print("!");
 }
 else{
-     digitalWrite(13,LOW); // if so, toggle the onboard LED
+     digitalWrite(13,LOW); 
 lcd.setCursor(3,0);
 lcd.print(" ");
 
